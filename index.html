@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singh Sumit | Data Scientist Portfolio</title>
+  <style>
+    :root {
+      --primary: #2d3e50;
+      --accent: #e46226;
+      --bg: #f4f7fa;
+      --white: #fff;
+      --gray: #6a6060;
+      --shadow: 0 2px 12px rgba(28, 7, 60, 0.877);
+      --transition: 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      /* Animation */
+      animation: fadeInDown 1s;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      transition: color var(--transition);
+    }
+    header h1:hover {
+      color: var(--accent);
+      cursor: pointer;
+      text-shadow: 0 2px 8px rgba(202, 141, 26, 0.879);
+    }
+    header p {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      transition: color var(--transition);
+    }
+    nav {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: fadeInDown 1.2s;
+    }
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      font-weight: 500;
+      transition: color var(--transition), border-bottom var(--transition), background var(--transition);
+      border-bottom: 2px solid transparent;
+      border-radius: 4px 4px 0 0;
+      margin: 0 0.2rem;
+      position: relative;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      background: rgba(30, 197, 163, 0.285);
+      border-bottom: 2px solid var(--accent);
+      box-shadow: 0 2px 8px rgba(26,188,156,0.08);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s, transform 0.8s;
+      will-change: opacity, transform;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      color: var(--accent);
+      margin-top: 0;
+      font-size: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.6rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    section h2:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      cursor: pointer;
+    }
+    /* Skills Grid */
+    .skills-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .skills-list div {
+      background:#f8fcfc;
+      padding: 1rem;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px rgba(165, 112, 14, 0.251);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .skills-list div:hover {
+      box-shadow: 0 6px 18px rgba(40, 207, 174, 0.283);
+      transform: translateY(-4px) scale(1.025);
+    }
+    .skills-list strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    /* Experience */
+    .exp-role {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+    }
+    .exp-company {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+    .exp-date {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .exp-details ul {
+      padding-left: 1.2rem;
+      margin: 0.3rem 0 0.7rem 0;
+    }
+    .exp-details ul li {
+      margin-bottom: 0.3rem;
+      transition: color var(--transition);
+    }
+    .exp-details ul li:hover {
+      color: var(--accent);
+    }
+    /* Projects */
+    .project {
+      margin-bottom: 1.2rem;
+      background:#f8fcfc;
+      border-radius: 7px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(165, 112, 14, 0.251);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .project:hover {
+      box-shadow: 0 6px 18px rgba(26,188,156,0.13);
+      transform: translateY(-4px) scale(1.025);
+    }
+    .project-title {
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .project-date {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-left: 0.5rem;
+    }
+    .project ul {
+      margin: 0.5rem 0 0 1.2rem;
+      padding: 0;
+    }
+    .project ul li {
+      margin-bottom: 0.2rem;
+      transition: color var(--transition);
+    }
+    .project ul li:hover {
+      color: var(--accent);
+    }
+    /* Certificates */
+    .cert-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cert-list li {
+      margin-bottom: 0.7rem;
+      transition: transform var(--transition);
+    }
+    .cert-list li:hover {
+      transform: scale(1.03) translateX(5px);
+    }
+    .cert-list a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-weight: 500;
+      transition: color var(--transition), text-shadow var(--transition);
+    }
+    .cert-list a:hover {
+      color: var(--primary);
+      text-shadow: 0 2px 8px rgba(26,188,156,0.10);
+    }
+    /* Education */
+    .edu-entry {
+      margin-bottom: 1.2rem;
+      transition: box-shadow var(--transition), transform var(--transition);
+      background: #f8fcfc;
+      padding: 1rem 1.2rem;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px rgba(165, 112, 14, 0.251);;
+    }
+    .edu-entry:hover {
+      box-shadow: 0 6px 18px rgba(26,188,156,0.13);
+      transform: translateY(-4px) scale(1.025);
+    }
+    .edu-degree {
+      font-weight: bold;
+    }
+    .edu-date {
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-left: 0.5rem;
+    }
+    /* Activities */
+    .activity-title {
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    /* Contact */
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-list li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .contact-list li:hover {
+      color: var(--accent);
+      transform: scale(1.05) translateX(5px);
+    }
+    .contact-list a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition), text-shadow var(--transition);
+    }
+    .contact-list a:hover {
+      color: var(--primary);
+      
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.614);
+      text-decoration: underline;
+    }
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 1;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Responsive */
+    @media (max-width: 800px) {
+      .container { padding: 0 0.5rem; }
+      section { padding: 1.2rem 0.7rem; }
+      .skills-list { grid-template-columns: 1fr; }
+    }
+   @media (max-width: 500px) {
+  header h1 { font-size: 1.25rem; }
+  nav a { padding: 0.7rem 0.4rem; font-size: 0.96rem; }
+  section h2 { font-size: 1rem; }
+  section, .container { padding: 0.5rem !important; }
+  p, li, .exp-details, .project ul, .project li {
+    font-size: 0.98rem;
+    word-break: break-word;
+  }
+}
+body {
+  overflow-x: hidden;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+section {
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+        /* Hobbies & Languages */
+    .hobby-list, .lang-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hobby-list li, .lang-list li {
+      background: #f8fcfc;
+      padding: 0.7rem 1.2rem;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px rgba(165, 112, 14, 0.251);
+      font-weight: 500;
+      color: var(--primary);
+      transition: box-shadow 0.3s, color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .hobby-list li:hover, .lang-list li:hover {
+      color: var(--accent);
+      box-shadow: 0 6px 18px rgba(65, 221, 190, 0.594);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .lang-list strong {
+      color: var(--accent);
+      margin-right: 0.3rem;
+    }
+    @media (max-width: 600px) {
+      .hobby-list, .lang-list {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    .resume-btn {
+  position: relative;
+  display: inline-block;
+  margin: 1.2rem auto 0 auto;
+  padding: 0.8rem 1.7rem;
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(26,188,156,0.13);
+  text-decoration: none;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.resume-btn span {
+  position: relative;
+  z-index: 2;
+}
+.resume-btn::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(270deg, #1abc9c, #2d3e50, #1abc9c, #2d3e50);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  z-index: 1;
+  animation: glowing-border 3s linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+}
+@keyframes glowing-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.resume-btn:hover, .resume-btn:focus {
+  background: var(--primary);
+  color: var(--accent);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(26,188,156,0.17);
+  text-decoration: none;
+}
+header {
+  width: 100%;
+  text-align: center;
+  background: #34495e; /* or your preferred color */
+  padding: 2rem 1rem 1rem 1rem;
+}
+.profile-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1abc9c;
+  box-shadow: 0 4px 24px rgba(26,188,156,0.18);
+  transition: transform 0.4s, box-shadow 0.4s;
+  background: #fff;
+  animation: profilePulseGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes profilePulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 24px rgba(26,188,156,0.18), 0 0 0 0 rgba(26,188,156,0.15);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 8px 32px rgba(26,188,156,0.28), 0 0 0 12px rgba(26,188,156,0.10);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 24px rgba(26,188,156,0.18), 0 0 0 0 rgba(26,188,156,0.15);
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+  <div class="profile-img-container">
+    <img src="SS.png" alt="Singh Sumit" class="profile-img animated-ring">
+  </div>
+  <h1>Singh Sumit</h1>
+  <p>
+    A passionate and driven Data Scientist with a strong foundation in data science and analytics.<br>
+    I enjoy exploring data, uncovering insights, and turning them into meaningful stories through visualizations.
+  </p>
+  <a href="ResumeS.pdf" download class="resume-btn"><span>Download Resume</span></a>
+</header>
+
+
+  <nav>
+    <a href="#skills" class="active">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Project</a>
+    <a href="#education">Education</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#activities">Activities</a>
+    <a href="#contact">Contact Me</a>
+  </nav>
+
+  <div class="container">
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div>
+          <strong>Programming Languages:</strong>
+          Python, SQL, R (Basic)
+        </div>
+        <div>
+          <strong>Visualization Tools:</strong>
+          Power BI, Tableau
+        </div>
+        <div>
+          <strong>Web Technologies:</strong>
+          HTML, CSS
+        </div>
+        <div>
+          <strong>Technologies:</strong>
+          Machine Learning, Pandas, Numpy, Matplotlib
+        </div>
+        <div>
+          <strong>Platforms:</strong>
+          VSCode, Microsoft Excel, PowerPoint, Jupyter Notebook, Teams, Google Colab, AWS (Basic)
+        </div>
+        <div>
+          <strong>Domain Knowledge:</strong>
+          Banking, Finance & Investment, Ecommerce
+        </div>
+        <div>
+          <strong>Database:</strong>
+          MySQL, NoSQL
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="exp-role">Participant – McKinsey Forward Program (Trainee)</div>
+      <div class="exp-company">McKinsey & Company - Remote</div>
+      <span class="exp-date">Apr 2025 – Present</span>
+      <div class="exp-details">
+        <ul>
+          <li>Focused on leadership development, strategic thinking, and problem-solving.</li>
+          <li>Engaged in interactive modules, real-world case studies, and practical challenges.</li>
+          <li>Developing skills in:
+            <ul>
+              <li>Managing teams effectively</li>
+              <li>Navigating complex business challenges</li>
+              <li>Driving organizational impact and decision-making</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Project</h2>
+      <div class="project">
+        <span class="project-title">Unicorn Analysis</span>
+        <span class="project-date">(Excel, Python, Power BI) Sep 2024</span>
+        <ul>
+          <li>Cleaned and analyzed Unicorn Companies dataset using Excel and Python to uncover key insights.</li>
+          <li>Created interactive dashboards and visualizations in Power BI to highlight trends and patterns.</li>
+          <li>Applied advanced data manipulation techniques to ensure accurate data representation and visualization.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <span class="project-title">Forecasting Natural Gas Prices</span>
+        <span class="project-date">(Python, Pandas, Numpy, Matplotlib, Machine Learning) Nov 2024</span>
+        <ul>
+          <li>Built a machine learning model using Scikit-learn for time-series forecasting of natural gas prices.</li>
+          <li>Developed a robust data preprocessing pipeline and used Linear Regression for prediction.</li>
+          <li>Visualized historical and forecasted prices using Matplotlib, enhancing interpretability.</li>
+          <li><strong>Impact:</strong> Achieved 95% accuracy in test data, providing actionable energy market insights.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="edu-entry">
+        <span class="edu-degree">Master of Science - Data Science</span>
+        <span class="edu-date">Sep 2024 – Present</span><br>
+        Reva University, Bangalore, India
+      </div>
+      <div class="edu-entry">
+        <span class="edu-degree">Bachelor of Computer Application</span>
+        <span class="edu-date">Aug 2021 – Jun 2024</span><br>
+        Bhagwan Mahavir University, Surat, India
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates">
+      <h2>Certificates</h2>
+      <ul class="cert-list">
+        <li>
+          <a href="https://www.coursera.org/account/accomplishments/verify/MKH1AGA30MFJ" target="_blank">Business Analysis & Process Management (Coursera)</a>
+        </li>
+        <li>
+          <a href="https://moonshot.scaler.com/s/sl/jvjEXsW_ne?_gl=1*1unmv4c*_gcl_au*MTM5MDE1MTMwOC4xNzI1MjYxNTgx*FPAU*MjAxMDk2MzY0Ny4xNzE5MzgwMjE3*_ga*MTg5MDkwMDAzOS4xNzI1MjUzMTA4*_ga_53S71ZZG1X*MTcyNTY4NTY5OC4xOS4xLjE3MjU2ODgyOTIuMC4wLjE4ODc5MTM4NzU." target="_blank">Python & SQL for Data Science (Scaler)</a>
+        </li>
+        <li>
+          <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/PwC%20Switzerland/a87GpgE6tiku7q3gu_PwC%20Switzerland_heW765FsPahf3FAgF_1725019752362_completion_certificate.pdf" target="_blank">Power BI Job Simulation (PwC)</a>
+        </li>
+        <li>
+          <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_heW765FsPahf3FAgF_1723188750622_completion_certificate.pdf" target="_blank">Data Analytics and Visualization Job Simulation (Accenture)</a>
+        </li>
+        <li>
+          <a href="https://www.credly.com/badges/7ad71f99-8e7c-48f4-80c6-bd31ba67a7f7/linked_in_profile" target="_blank">Data Analytics Essentials (Cisco)</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Activities -->
+    <section id="activities">
+      <h2>Activities</h2>
+      <div class="activity-title">Spandan Sports Event, Bhagwan Mahavir University, Surat, India (Nov 2023)</div>
+      <div>Captain, Volleyball Team</div>
+      <ul>
+        <li>Led the team to Runner-Up position, demonstrating leadership, teamwork, sportsmanship, and strategic thinking.</li>
+      </ul>
+    </section>
+
+    <!--Hobbies & Language-->
+        <!-- Hobbies -->
+    <section id="hobbies">
+      <h2>Hobbies</h2>
+      <ul class="hobby-list">
+        <li>Cricket</li>
+        <li>Volleyball</li>
+        <li>GYM</li>
+        <li>Cooking</li>
+        <li>Running</li>
+      </ul>
+    </section>
+
+    <!-- Language -->
+    <section id="languages">
+      <h2>Languages</h2>
+      <ul class="lang-list">
+        <li><strong>English:</strong> Fluent</li>
+        <li><strong>Hindi:</strong> Fluent</li>
+        <li><strong>Gujarati:</strong> Intermediate</li>
+      </ul>
+    </section>
+
+
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <ul class="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:your.sumitpratapsingh2000@gmail.com">sumitpratapsingh2000@gmail.com</a></li>
+        <li><strong>Phone:</strong> <a href="tel:(+91) 9512691038">(+91) 9512691038</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sumit-singh02/" target="_blank">Singh Sumit</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/2000sumit" target="_blank">github.com/2000sumit</a></li>
+        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/i_am__inevitable7/" target="_blank">i_am__inevitable7</a></li>
+        <li><strong>X:</strong> <a href="https://x.com/singh_sumit0215" target="_blank">@singh_sumit0215
+</a></li></ul>
+      <p style="font-size:0.95rem;color:var(--gray);margin-top:1.5rem;">&copy; 2025 Singh Sumit. All rights reserved.</p>
+    </section>
+  </div>
+
+  <script>
+    // Highlight active nav link on scroll
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 90;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Section fade-in animation on scroll
+    function revealSections() {
+      const revealPoint = 100;
+      sections.forEach(section => {
+        const windowHeight = window.innerHeight;
+        const sectionTop = section.getBoundingClientRect().top;
+        if(sectionTop < windowHeight - revealPoint) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
+  </script>
+</body>
+</html>
